@@ -10,22 +10,24 @@ class Solution:
         if not lists:
             return None
 
-        nodes=[]
+        for i in range(1,len(lists)):
+            lists[i]=self.mergeList(lists[i-1],lists[i])
+        return lists[-1]
 
-        for lst in lists:
-            while lst:
-                nodes.append(lst.val)
-                lst=lst.next
-        nodes.sort()
+    def mergeList(self,l1,l2):
 
+            dummy =ListNode()
+            curr=dummy
 
-        res=ListNode(0)
-        st=res
+            while l1 and l2:
+                if l1.val < l2.val:
+                    curr.next=l1
+                    l1=l1.next
+                else:
+                    curr.next=l2
+                    l2=l2.next
+                curr=curr.next
+            
 
-        for node in nodes:
-            st.next=ListNode(node)
-            st=st.next
-
-        return res.next
-
-        
+            curr.next=l1 if l1 else l2
+            return dummy.next
