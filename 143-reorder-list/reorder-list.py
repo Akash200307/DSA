@@ -8,29 +8,35 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        dup_list=[]
-        curr=head
-        while curr:
-            dup_list.append(curr.val)
-            curr=curr.next
+        slow=head
+        fast=head.next
 
-        curr = head
-        curr.next = None
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+        
 
-        left=1
-        right=len(dup_list)-1
+        second=slow.next
 
-        while(left<=right):
-            curr.next = ListNode(dup_list[right])
-            curr = curr.next
-            right -= 1
-            
-            # If we still have elements from left side
-            if left <= right:
-                curr.next = ListNode(dup_list[left])
-                curr = curr.next
-                left += 1
+        prev=None
+        slow.next=None
 
-           
+        while second:
+            temp=second.next
+            second.next=prev
+            prev=second
+            second=temp
+
+        first=head
+        second=prev
+        while first and second:
+            tmp1=first.next
+            tmp2=second.next
+            first.next=second
+            second.next=tmp1
+
+            first=tmp1
+            second=tmp2
+
 
         
