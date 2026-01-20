@@ -14,10 +14,10 @@ class Solution:
 
             if not root:
                 return
-            
+            lst.append(root.val)
             traverse(root.left)
             traverse(root.right)
-            lst.append(root.val)
+            
 
         
         traverse(root)
