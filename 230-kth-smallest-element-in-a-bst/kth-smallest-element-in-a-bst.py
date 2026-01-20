@@ -11,9 +11,9 @@ class Solution:
         def traverse(root):
             if not root:
                 return 0
-            lst.append(root.val)
             traverse(root.left)
             traverse(root.right)
+            lst.append(root.val)
             
 
         
