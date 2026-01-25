@@ -16,15 +16,15 @@ class Codec:
         res=[]
         def dfs(node):
             if not node:
-                res.append('N')
+                res.append("N")
                 return
-
             res.append(str(node.val))
             dfs(node.left)
             dfs(node.right)
         dfs(root)
 
         return ",".join(res)
+
         
 
     def deserialize(self, data):
@@ -33,22 +33,21 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        nodes=data.split(",")
+        data=data.split(",")
         self.i=0
         def dfs():
-            if nodes[self.i]=='N':
+            if data[self.i]=="N":
                 self.i+=1
                 return None
             
-            node=TreeNode(int(nodes[self.i]))
+            node=TreeNode(int(data[self.i]))
             self.i+=1
             node.left=dfs()
             node.right=dfs()
             return node
         return dfs()
+
             
-
-
         
 
 # Your Codec object will be instantiated and called as such:
