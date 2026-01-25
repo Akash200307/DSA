@@ -9,22 +9,20 @@ class Solution:
         q=collections.deque()
 
         res=[]
-
         q.append(root)
-
         while q:
-            level=[]
-            l=len(q)
-            
-            for i in range(l):
+            curr=[]
+            n=len(q)
+
+            for i in range(n):
                 node=q.popleft()
                 if node:
-                    level.append(node.val)
+                    curr.append(node.val)
                     q.append(node.left)
                     q.append(node.right)
-            
-            if len(level)!=0:
-                res.append(level)
 
+            if curr:
+                res.append(curr)
         return res
-        
+
+
