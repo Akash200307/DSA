@@ -11,23 +11,20 @@ class Solution:
             "8": "tuv",
             "9": "wxyz",
         }
-        res=[]
-        sol=[]
+        res,sol=[],[]
+
         def dfs(i):
-            if len(sol)==len(digits):
-                res.append("".join(sol))
-                return
-
-            for c in digitToChar[digits[i]]:
-                sol.append(c)
-                dfs(i+1)
-                sol.pop()
+                if len(sol)==len(digits):
+                    res.append("".join(sol.copy()))
+                    return
                 
+                for c in digitToChar[digits[i]]:
+                    sol.append(c)
+                    dfs(i+1)
+                    sol.pop()
 
-        
-        if digits:
-            dfs(0)
 
+        dfs(0)
         return res
 
             
