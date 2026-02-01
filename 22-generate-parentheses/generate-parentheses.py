@@ -1,14 +1,11 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        res=[]
-        sol=[]
-        
+        res,sol=[],[]
         def dfs(open_b,close_b):
             if len(sol)==2*n:
                 res.append("".join(sol.copy()))
                 return
             
-
             if open_b<n:
                 sol.append("(")
                 dfs(open_b+1,close_b)
@@ -18,5 +15,6 @@ class Solution:
                 sol.append(")")
                 dfs(open_b,close_b+1)
                 sol.pop()
+
         dfs(0,0)
         return res
