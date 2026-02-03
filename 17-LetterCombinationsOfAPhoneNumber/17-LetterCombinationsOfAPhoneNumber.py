@@ -1,0 +1,31 @@
+# Last updated: 2/3/2026, 9:44:12 PM
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        
+        digitToChar = {
+            "2": "abc",
+            "3": "def",
+            "4": "ghi",
+            "5": "jkl",
+            "6": "mno",
+            "7": "qprs",
+            "8": "tuv",
+            "9": "wxyz",
+        }
+        res,sol=[],[]
+
+        def dfs(i):
+                if len(sol)==len(digits):
+                    res.append("".join(sol.copy()))
+                    return
+                
+                for c in digitToChar[digits[i]]:
+                    sol.append(c)
+                    dfs(i+1)
+                    sol.pop()
+
+
+        dfs(0)
+        return res
+
+            
